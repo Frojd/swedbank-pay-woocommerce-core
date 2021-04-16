@@ -133,6 +133,13 @@ trait Card
             $params['payment']['generateRecurrenceToken'] = false;
         }
 
+        $payeeInfo = apply_filters(
+            'swedbankpay_payee_info_filter',
+            $params['payment']['payeeInfo'],
+            $order
+        );
+        $params['payment']['payeeInfo'] = $payeeInfo;
+
         try {
             $result = $this->request('POST', self::CARD_PAYMENTS_URL, $params);
         } catch (\Exception $e) {
@@ -194,6 +201,13 @@ trait Card
             ]
         ];
 
+        $payeeInfo = apply_filters(
+            'swedbankpay_payee_info_filter',
+            $params['payment']['payeeInfo'],
+            $order
+        );
+        $params['payment']['payeeInfo'] = $payeeInfo;
+
         if ($this->configuration->getUseCardholderInfo()) {
             $params['payment']['cardholder'] = $order->getCardHolderInformation();
         }
@@ -250,6 +264,13 @@ trait Card
                 ],
             ]
         ];
+
+        $payeeInfo = apply_filters(
+            'swedbankpay_payee_info_filter',
+            $params['payment']['payeeInfo'],
+            $order
+        );
+        $params['payment']['payeeInfo'] = $payeeInfo;
 
         // Use Recurrence Token if it's exist
         if (!empty($recurrenceToken)) {
@@ -317,6 +338,13 @@ trait Card
         } else {
             $params['payment']['paymentToken'] = $paymentToken;
         }
+
+        $payeeInfo = apply_filters(
+            'swedbankpay_payee_info_filter',
+            $params['payment']['payeeInfo'],
+            $order
+        );
+        $params['payment']['payeeInfo'] = $payeeInfo;
 
         try {
             $result = $this->request('POST', self::CARD_PAYMENTS_URL, $params);

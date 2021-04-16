@@ -56,6 +56,12 @@ trait Swish
 
         $payeeInfo = new PaymentPayeeInfo($this->getPayeeInfo($orderId)->toArray());
 
+        $payeeInfo = apply_filters(
+            'swedbankpay_payee_info_filter',
+            $payeeInfo,
+            $order
+        );
+
         $prefillInfo = new PaymentPrefillInfo([
             'msisdn' => $phone,
         ]);

@@ -161,6 +161,13 @@ trait OrderAction
             ]
         ];
 
+        $payeeReference = apply_filters(
+            'swedbankpay_payee_reference_in_capture',
+            $params['transaction']['payeeReference'],
+            $order
+        );
+        $params['transaction']['payeeReference'] = $payeeReference;
+
         $result = $this->request('POST', $href, $params);
 
         // Save transaction
