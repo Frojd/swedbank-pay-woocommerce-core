@@ -136,7 +136,8 @@ trait Card
         $payeeInfo = apply_filters(
             'swedbankpay_payee_info_filter',
             $params['payment']['payeeInfo'],
-            $order
+            $order,
+            ['intent' => $params['payment']['intent']]
         );
         $params['payment']['payeeInfo'] = $payeeInfo;
 
@@ -204,7 +205,8 @@ trait Card
         $payeeInfo = apply_filters(
             'swedbankpay_payee_info_filter',
             $params['payment']['payeeInfo'],
-            $order
+            $order,
+            ['intent' => null]
         );
         $params['payment']['payeeInfo'] = $payeeInfo;
 
@@ -268,7 +270,8 @@ trait Card
         $payeeInfo = apply_filters(
             'swedbankpay_payee_info_filter',
             $params['payment']['payeeInfo'],
-            $order
+            $order,
+            ['intent' => $params['payment']['intent']]
         );
         $params['payment']['payeeInfo'] = $payeeInfo;
 
@@ -342,7 +345,8 @@ trait Card
         $payeeInfo = apply_filters(
             'swedbankpay_payee_info_filter',
             $params['payment']['payeeInfo'],
-            $order
+            $order,
+            ['intent' => $params['payment']['intent']]
         );
         $params['payment']['payeeInfo'] = $payeeInfo;
 

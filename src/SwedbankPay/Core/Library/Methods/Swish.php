@@ -59,7 +59,8 @@ trait Swish
         $payeeInfo = apply_filters(
             'swedbankpay_payee_info_filter',
             $payeeInfo,
-            $order
+            $order,
+            ['intent' => 'AutoCapture']
         );
 
         $prefillInfo = new PaymentPrefillInfo([
